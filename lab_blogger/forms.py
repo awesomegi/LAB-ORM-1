@@ -1,11 +1,11 @@
 from django import forms
-from .models import Post
+from blog_db.models import Post
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content']
+        fields = ['title', 'content', 'poster']
         widgets = {
             'title': forms.TextInput(attrs={
                 'placeholder': 'Enter your post title...',

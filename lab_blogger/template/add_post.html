@@ -8,7 +8,7 @@
     <p class="page-subtitle">Fill in the fields below and hit Publish.</p>
 
     <div class="form-card">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
             <div class="form-group">
@@ -21,6 +21,15 @@
                 <label for="{{ form.content.id_for_label }}">Content</label>
                 {{ form.content }}
                 {{ form.content.errors }}
+            </div>
+
+            <div class="form-group">
+                <label>Post Image</label>
+                <label class="btn btn-upload">
+                    Choose Image
+                    {{ form.poster }}
+                </label>
+                {{ form.poster.errors }}
             </div>
 
             <div>

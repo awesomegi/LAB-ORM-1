@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Post
+from blog_db.models import Post
 from .forms import PostForm
 
 
@@ -12,7 +12,7 @@ def home(request):
 # Add Post page: handles the form to create a new post
 def add_post(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('lab_blogger:home')  # go back to homepage after saving
