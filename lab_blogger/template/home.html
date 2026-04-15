@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Blogger - Latest Posts{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-title">Latest Posts</h1>
+    <p class="page-subtitle">{{ posts.count }} post{{ posts.count|pluralize }} published</p>
+
+    {% for post in posts %}
+        <div class="post-card">
+            <h2 class="post-title">{{ post.title }}</h2>
+            <p class="post-meta">{{ post.published_at|date:"d-m-Y" }} &nbsp;&middot;&nbsp; {{ post.published_at|time:"h:i A" }}</p>
+            <p class="post-content">{{ post.content }}</p>
+        </div>
+    {% empty %}
+        <div class="empty-state">
+            <p>No posts yet. Be the first to write one!</p>
+            <a href="{% url 'lab_blogger:add_post' %}">Create your first post</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}
